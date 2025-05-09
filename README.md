@@ -57,7 +57,6 @@ docker-compose exec web python manage.py createsuperuser
 - POST /api/book/buy/<book_id>/ - Compra de libros
 - Body:
 ```json
-CopiarEditar
 {
   "quantity": 3
 }
