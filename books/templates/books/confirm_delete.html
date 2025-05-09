@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Confirmar Eliminación</h2>
+            <p>¿Estás seguro de eliminar <strong>"{{ object.title }}"</strong>?</p>
+            
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Eliminar Definitivamente
+                </button>
+                <a href="{% url 'book-list' %}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver al listado
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

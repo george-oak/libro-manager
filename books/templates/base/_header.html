@@ -1,0 +1,17 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" width="30" height="30" class="d-inline-block align-top">
+            LibroManager
+        </a>
+        <div class="navbar-nav">
+            {% if user.is_authenticated %}
+                <span class="nav-item text-light me-3">Hola, {{ user.username }}</span>
+                <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+            {% else %}
+                <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
