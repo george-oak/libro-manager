@@ -16,7 +16,8 @@ from django.views.generic import (
 from .tasks import restock_book
 
 
-class BookListView(ListView):
+class BookListView(LoginRequiredMixin, ListView):
+    login_url = '/login/'
     model = Book
     template_name = 'books/list.html'
     context_object_name = 'books'
@@ -52,7 +53,8 @@ class BookDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('book-list')
 
 
-class BuyStockView(View):
+class BuyStockView(LoginRequiredMixin, View):
+    login_url = '/login/'
     def post(self, request, pk):
         book = get_object_or_404(Book, pk=pk)
         quantity = int(request.POST.get('quantity', 0))
